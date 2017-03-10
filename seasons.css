@@ -1,0 +1,13 @@
+body{
+
+	background: url("dinos.jpg") no-repeat center center fixed;
+	background-size: cover;
+}
+
+.items{
+	background-color: rgba(38, 12, 12, 0.62);
+	max-width: 180px;
+	color: white;
+	padding: 10px;
+
+}
