@@ -67,42 +67,47 @@ console.log("productsRequest", productsRequest);
 console.log("test"+products);
 console.log("test"+categories);
 
-function discount(season){
-  var newProducts = products;
-  for(i=0; i < newProducts.length; i++){
+// function discount(season){
+//   var newProducts = products;
+//   for(i=0; i < newProducts.length; i++){
 
-    switch(season){
-      case 'winter':
-        for(var i=0; i<categories.length; i++){
-          if(categories[i].season_discount === 'winter'){
-            var discount = categories[i].discount; ///0.54
-            var category = categories[i].id;
-            if(newProduct[i].category_id === category)
-            newProduct[i].price -= newProduct[i].price*discount;
-          }
-         }
-      case 'spring':
-        for(var i=0; i<categories.length; i++){
-          if(categories[i].season_discount === 'spring'){
-            var discount = categories[i].discount; ///0.54
-            var category = categories[i].id;
-            if(newProduct[i].category_id === category)
-            newProduct[i].price -= newProduct[i].price*discount;
-          }
-         }
-      case 'autumn':
-        for(var i=0; i<categories.length; i++){
-          if(categories[i].season_discount === 'autumn'){
-            var discount = categories[i].discount; ///0.54
-            var category = categories[i].id;
-            if(newProduct[i].category_id === category)
-            newProduct[i].price -= newProduct[i].price*discount;
-          }
-         }
-    }
-  
-  renderProducts(newProducts);
-}
+//     switch(season){
+//       case 'Winter':
+//         for(var i=0; i<categories.length; i++){
+//           if(categories[i].season_discount === 'Winter'){
+//             var discount = categories[i].discount; ///0.54
+//             var category = categories[i].id;
+//             if(newProducts[i].category_id === category)
+//             newProducts[i].price -= newProducts[i].price*discount;
+//           }
+//          }
+//          break;
+//       case 'Spring':
+//         for(var i=0; i<categories.length; i++){
+//           if(categories[i].season_discount === 'Spring'){
+//             var discount = categories[i].discount; ///0.54
+//             var category = categories[i].id;
+//             if(newProducts[i].category_id === category)
+//             newProducts[i].price -= newProducts[i].price*discount;
+//           }
+//          }
+//          break;
+//       case 'Autumn':
+//         for(var i=0; i<categories.length; i++){
+//           if(categories[i].season_discount === 'Autumn'){
+//             var discount = categories[i].discount; ///0.54
+//             var category = categories[i].id;
+//             if(newProducts[i].category_id === category)
+//             newProducts[i].price -= newProducts[i].price*discount;
+//           }
+//          }
+//          break;
+//       default:
+//         console.log('default');
+//     }
+// }  
+//   renderProducts(newProducts);
+// }
  
 seasonSelect.addEventListener("change",function() {
      var season = this.value;
