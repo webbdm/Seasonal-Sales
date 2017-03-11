@@ -1,93 +1,139 @@
-var products = [
-    {
-      "id": 0,
-      "name": "Kids socks",
-      "price": 4.99,
-      "category_id": 1
-    },
-    {
-      "id": 1,
-      "name": "Mens socks",
-      "price": 6.99,
-      "category_id": 1
-    },
-    {
-      "id": 2,
-      "name": "Ladies socks",
-      "price": 7.99,
-      "category_id": 1
-    },
-    {
-      "id": 3,
-      "name": "Foot stool",
-      "price": 14.99,
-      "category_id": 2
-    },
-    {
-      "id": 4,
-      "name": "Lava lamp",
-      "price": 9.99,
-      "category_id": 2
-    },
-    {
-      "id": 5,
-      "name": "3 drawer dresser",
-      "price": 64.99,
-      "category_id": 2
-    },
-    {
-      "id": 6,
-      "name": "Air filter",
-      "price": 6.99,
-      "category_id": 3
-    },
-    {
-      "id": 7,
-      "name": "Surge protector",
-      "price": 8.99,
-      "category_id": 3
-    },
-    {
-      "id": 8,
-      "name": "Plastic storage bin",
-      "price": 3.99,
-      "category_id": 3
-    },
-    {
-      "id": 9,
-      "name": "Light bulb",
-      "price": 1.99,
-      "category_id": 3
-    }
-  ];
-var categories = [
-    {
-      "id": 1,
-      "name": "Apparel",
-      "season_discount": "Winter",
-      "discount": 0.10
-    },
-    {
-      "id": 2,
-      "name": "Furniture",
-      "season_discount": "Autumn",
-      "discount": 0.25
-    },
-    {
-      "id": 3,
-      "name": "Household",
-      "season_discount": "Spring",
-      "discount": 0.15
-    }
-];
+var productData;
+var catsData;
+var products;
+var categories;
+
+function LoadedProducts(){
+  productData = JSON.parse(this.responseText);
+  //productsArray.push(productData.products);
+  console.log(productData);
+  products = productData.products;
+}
+
+function LoadedCats(){
+  catsData = JSON.parse(this.responseText);
+  //categoriesArray.push(catsData);
+  console.log(catsData);
+  categories = catsData.categories;
+}
+
+function executeThisCodeAfterFileFails(){
+  console.log("failed");
+
+}
+
+var catsRequest = new XMLHttpRequest();
+catsRequest.addEventListener("load", LoadedCats);
+catsRequest.addEventListener("error", executeThisCodeAfterFileFails);
+catsRequest.open("GET","cats.json");
+catsRequest.send();
+//console.log("catsRequest", catsRequest);
+
+var productsRequest = new XMLHttpRequest();
+productsRequest.addEventListener("load", LoadedProducts);
+productsRequest.addEventListener("error", executeThisCodeAfterFileFails);
+productsRequest.open("GET","products.json");
+productsRequest.send();
+//console.log("productsRequest", productsRequest);
+
+// var products = [
+//     {
+//       "id": 0,
+//       "name": "Kids socks",
+//       "price": 4.99,
+//       "category_id": 1
+//     },
+//     {
+//       "id": 1,
+//       "name": "Mens socks",
+//       "price": 6.99,
+//       "category_id": 1
+//     },
+//     {
+//       "id": 2,
+//       "name": "Ladies socks",
+//       "price": 7.99,
+//       "category_id": 1
+//     },
+//     {
+//       "id": 3,
+//       "name": "Foot stool",
+//       "price": 14.99,
+//       "category_id": 2
+//     },
+//     {
+//       "id": 4,
+//       "name": "Lava lamp",
+//       "price": 9.99,
+//       "category_id": 2
+//     },
+//     {
+//       "id": 5,
+//       "name": "3 drawer dresser",
+//       "price": 64.99,
+//       "category_id": 2
+//     },
+//     {
+//       "id": 6,
+//       "name": "Air filter",
+//       "price": 6.99,
+//       "category_id": 3
+//     },
+//     {
+//       "id": 7,
+//       "name": "Surge protector",
+//       "price": 8.99,
+//       "category_id": 3
+//     },
+//     {
+//       "id": 8,
+//       "name": "Plastic storage bin",
+//       "price": 3.99,
+//       "category_id": 3
+//     },
+//     {
+//       "id": 9,
+//       "name": "Light bulb",
+//       "price": 1.99,
+//       "category_id": 3
+//     }
+//   ];
+// var categories = [
+//     {
+//       "id": 1,
+//       "name": "Apparel",
+//       "season_discount": "Winter",
+//       "discount": 0.10
+//     },
+//     {
+//       "id": 2,
+//       "name": "Furniture",
+//       "season_discount": "Autumn",
+//       "discount": 0.25
+//     },
+//     {
+//       "id": 3,
+//       "name": "Household",
+//       "season_discount": "Spring",
+//       "discount": 0.15
+//     }
+// ];
+
+// var products = LoadedProducts();
+// var categories = LoadedCats();
+console.log("test"+products);
+console.log("test"+categories);
+
 var prices =[];
 var cats =[];
-for (i=0; i<products.length; i++){
+function p(){for (i=0; i<products.length; i++){
   prices.push(products[i].price);
-}
-for(i=0; i<categories.length; i++){
+  }
+};
+function c(){for(i=0; i<categories.length; i++){
   cats.push(categories[i].discount);
-}
+  }
+};
 
 var sockDIV = document.getElementById("sockDIV");
 var furnitureDIV = document.getElementById("furnitureDIV");
@@ -140,13 +186,16 @@ function discount(season){
   for(i=0; i < products.length; i++){
     switch(season){
       case "Winter":
-        products[i].price = (prices[i] -(prices[i] * cats[0])).toFixed(2);
+      if(products[i].category_id === 1){
+        products[i].price = (prices[i] - (prices[i] * cats[0])).toFixed(2);}
         break; 
       case "Autumn":
-        products[i].price = (prices[i] -(prices[i] * cats[1])).toFixed(2);
+      if(products[i].category_id === 2){
+        products[i].price = (prices[i] - (prices[i] * cats[1])).toFixed(2);}
         break;
       case "Spring":
-        products[i].price = (prices[i] -(prices[i] * cats[2])).toFixed(2);
+      if(products[i].category_id === 3){
+        products[i].price = (prices[i] - (prices[i] * cats[2])).toFixed(2);}
         break;
       default:
         console.log('default');
@@ -173,7 +222,7 @@ function renderProducts(){
         console.log('default');
     }
   }
-} 
+ 
 
 for(i=0; i < categories.length; i++){
     switch (categories[i].id){
@@ -189,6 +238,7 @@ for(i=0; i < categories.length; i++){
       default:
         console.log('default');    
     }
+}
 }
 
 select.onchange = function() {
