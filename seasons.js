@@ -3,38 +3,38 @@ var catsData;
 var products;
 var categories;
 
-// function LoadedProducts(){
-//   productData = JSON.parse(this.responseText);
-//   //productsArray.push(productData.products);
-//   console.log(productData);
-//   products = productData.products;
-// }
+function LoadedProducts(){
+  productData = JSON.parse(this.responseText);
+  //productsArray.push(productData.products);
+  console.log(productData);
+  products = productData.products;
+}
 
-// function LoadedCats(){
-//   catsData = JSON.parse(this.responseText);
-//   //categoriesArray.push(catsData);
-//   console.log(catsData);
-//   categories = catsData.categories;
-// }
+function LoadedCats(){
+  catsData = JSON.parse(this.responseText);
+  //categoriesArray.push(catsData);
+  console.log(catsData);
+  categories = catsData.categories;
+}
 
-// function executeThisCodeAfterFileFails(){
-//   console.log("failed");
+function executeThisCodeAfterFileFails(){
+  console.log("failed");
 
-// }
+}
 
-// var catsRequest = new XMLHttpRequest();
-// catsRequest.addEventListener("load", LoadedCats);
-// catsRequest.addEventListener("error", executeThisCodeAfterFileFails);
-// catsRequest.open("GET","cats.json");
-// catsRequest.send();
-// //console.log("catsRequest", catsRequest);
+var catsRequest = new XMLHttpRequest();
+catsRequest.addEventListener("load", LoadedCats);
+catsRequest.addEventListener("error", executeThisCodeAfterFileFails);
+catsRequest.open("GET","cats.json");
+catsRequest.send();
+//console.log("catsRequest", catsRequest);
 
-// var productsRequest = new XMLHttpRequest();
-// productsRequest.addEventListener("load", LoadedProducts);
-// productsRequest.addEventListener("error", executeThisCodeAfterFileFails);
-// productsRequest.open("GET","products.json");
-// productsRequest.send();
-//console.log("productsRequest", productsRequest);
+var productsRequest = new XMLHttpRequest();
+productsRequest.addEventListener("load", LoadedProducts);
+productsRequest.addEventListener("error", executeThisCodeAfterFileFails);
+productsRequest.open("GET","products.json");
+productsRequest.send();
+console.log("productsRequest", productsRequest);
 
 var products = [
     {
