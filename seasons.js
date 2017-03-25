@@ -84,7 +84,7 @@ function discount(season){
          break;
       case 'Spring':
         for(var k=0; k<categories.length; k++){
-          if(categories[i].season_discount === 'Spring'){
+          if(categories[k].season_discount === 'Spring'){
             var discount = categories[k].discount; ///0.54
             var category = categories[k].id;
             if(newProducts[i].category_id === category)
